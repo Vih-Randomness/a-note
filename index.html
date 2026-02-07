@@ -6,13 +6,12 @@
   <title>Një Pëshpëritje e Qetë</title>
   <style>
     :root{
-      --warm: #f5efe6;
-      --offwhite: #f8f6f1;
-      --muted: #b7b1a8;
-      --sage: #dfe8e4;
-      --dusty: #dbe3ea;
-      --text: #3f3a34;
-      --subtext: #6f6962;
+      --bg-top: #0b0b0c;
+      --bg-mid: #0e0f12;
+      --bg-bot: #121316;
+      --text: #e8e2d9;
+      --subtext: #b8b1a8;
+      --accent: #cfd8d4;
     }
 
     * { box-sizing: border-box; }
@@ -21,13 +20,13 @@
       margin: 0;
       padding: 0;
       min-height: 100%;
-      background: linear-gradient(180deg, var(--warm) 0%, var(--offwhite) 55%, var(--sage) 100%);
       color: var(--text);
       font-family: "Playfair Display", "Lora", "Cormorant Garamond", serif;
-      line-height: 1.9;
+      line-height: 1.95;
       letter-spacing: 0.2px;
+      background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 55%, var(--bg-bot) 100%);
+      animation: bgShift 360s ease-in-out infinite alternate;
       overflow-x: hidden;
-      animation: bgShift 240s ease-in-out infinite alternate;
     }
 
     body::before{
@@ -35,20 +34,20 @@
       position: fixed;
       inset: 0;
       background-image:
-        radial-gradient(rgba(255,255,255,0.35) 0.6px, transparent 0.7px),
-        radial-gradient(rgba(0,0,0,0.04) 0.5px, transparent 0.6px);
-      background-size: 120px 120px, 180px 180px;
-      background-position: 0 0, 60px 80px;
+        radial-gradient(rgba(255,255,255,0.04) 0.7px, transparent 0.8px),
+        radial-gradient(rgba(255,255,255,0.025) 0.5px, transparent 0.6px);
+      background-size: 140px 140px, 200px 200px;
+      background-position: 0 0, 70px 90px;
       opacity: 0.35;
       pointer-events: none;
-      animation: dustDrift 240s linear infinite;
+      animation: dustDrift 320s linear infinite;
     }
 
     body::after{
       content:"";
       position: fixed;
       inset: 0;
-      background: radial-gradient(1200px 600px at 50% -200px, rgba(255,255,255,0.35), transparent 70%);
+      background: radial-gradient(1200px 600px at 50% -200px, rgba(255,255,255,0.04), transparent 70%);
       pointer-events: none;
     }
 
@@ -59,90 +58,91 @@
 
     @keyframes dustDrift {
       0% { transform: translateY(0px) translateX(0px); }
-      100% { transform: translateY(-60px) translateX(40px); }
+      100% { transform: translateY(-80px) translateX(60px); }
     }
 
     .wrap {
-      max-width: 780px;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 80px 26px 120px;
+      padding: 76px 24px 120px;
       text-align: center;
     }
 
     h1 {
       font-weight: 400;
-      font-size: 2.1rem;
-      margin-bottom: 18px;
+      font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+      margin: 0 0 22px 0;
       color: var(--text);
     }
 
     .line {
       opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 1.8s ease, transform 1.8s ease;
+      transform: translateY(10px);
+      transition: opacity 2.6s ease, transform 2.6s ease;
       margin: 18px 0;
-      font-size: 1.15rem;
+      font-size: clamp(1.05rem, 2.6vw, 1.2rem);
+      will-change: opacity, transform;
     }
 
     .line.show {
       opacity: 1;
       transform: translateY(0);
-      animation: breathe 9s ease-in-out infinite;
+      animation: breathe 12s ease-in-out infinite;
     }
 
     @keyframes breathe {
       0%, 100% { opacity: 1; transform: translateY(0px); }
-      50% { opacity: 0.92; transform: translateY(-1.5px); }
+      50% { opacity: 0.93; transform: translateY(-1.2px); }
     }
 
     .section-title {
-      margin-top: 42px;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
+      margin: 46px 0 10px;
+      font-size: 0.92rem;
       color: var(--subtext);
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
       font-family: "Inter", "Helvetica", sans-serif;
     }
 
     .signature {
-      margin-top: 48px;
+      margin-top: 50px;
       font-family: "Inter", "Helvetica", sans-serif;
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--subtext);
       letter-spacing: 0.6px;
     }
 
     .controls {
       position: fixed;
-      bottom: 18px;
-      right: 18px;
+      bottom: 16px;
+      right: 16px;
       display: flex;
       align-items: center;
       gap: 10px;
-      opacity: 0.75;
+      opacity: 0.85;
     }
 
     .sound-toggle {
       font-family: "Inter", "Helvetica", sans-serif;
-      font-size: 0.85rem;
-      background: rgba(255,255,255,0.7);
-      border: 1px solid rgba(0,0,0,0.08);
-      color: #5a524a;
+      font-size: 0.82rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--accent);
       padding: 8px 12px;
       border-radius: 18px;
       cursor: pointer;
-      transition: background 0.6s ease, opacity 0.6s ease;
+      transition: background 0.8s ease, opacity 0.8s ease;
     }
 
     .sound-toggle:hover {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.1);
     }
 
     @media (max-width: 600px) {
-      .wrap { padding: 64px 22px 100px; }
-      h1 { font-size: 1.8rem; }
-      .line { font-size: 1.05rem; }
+      .wrap { padding: 64px 18px 110px; }
+      .line { margin: 16px 0; line-height: 2.05; }
+      .section-title { margin-top: 38px; }
+      .controls { bottom: 12px; right: 12px; }
     }
   </style>
 </head>
@@ -156,7 +156,7 @@
     <div class="line">Jam këtu, vetëm për të qenë pranë asaj që dhemb.</div>
 
     <div class="section-title">Humbja dhe Dashuria</div>
-    <div class="line">Humbja nuk është boshësi — është dashuri pa ku të shkojë.</div>
+    <div class="line">Humbja nuk është boshësi, është dashuri pa ku të shkojë.</div>
     <div class="line">Ajo mbetet në ajër, në krahun e munguar, në çdo kujtim që s’pushon së ndriçuari.</div>
 
     <div class="section-title">Pesha e Dhimbjes</div>
@@ -167,33 +167,33 @@
     <div class="line">Nuk ka nevojë të jesh e fortë tani.</div>
     <div class="line">Lejoje veten të jesh e thyer, ashtu siç je, pa arsye dhe pa kohë.</div>
 
-    <div class="section-title">Besimi — si pëshpëritje</div>
+    <div class="section-title">Besimi si pëshpëritje</div>
     <div class="line">Besimi nuk është gjithmonë zë i madh.</div>
-    <div class="line">Ndonjëherë është vetëm një pëshpëritje: “Unë jam këtu.”</div>
+    <div class="line">Ndonjëherë është vetëm një pëshpëritje, unë jam këtu.</div>
 
     <div class="section-title">Kujdesi dhe Dashuria</div>
     <div class="line">Kujdesi vjen ngadalë, si drita e mëngjesit që s’e nxjerr askënd nga ëndrra.</div>
-    <div class="line">Dashuria për të nuk humbet — ajo ndryshon formë, por jo zemër.</div>
+    <div class="line">Dashuria për të nuk humbet, ajo ndryshon formë, por jo zemër.</div>
 
     <div class="section-title">Mbyllja</div>
     <div class="line">Nëse sot është e rëndë, atëherë le të jetë e rëndë.</div>
-    <div class="line">Unë do të qëndroj këtu, pa të shtyrë, pa të nxituar — vetëm pranë.</div>
+    <div class="line">Unë do të qëndroj këtu, pa të shtyrë, pa të nxituar, vetëm pranë.</div>
 
-    <div class="signature">— Vihan</div>
+    <div class="signature">Vihan</div>
   </main>
 
   <div class="controls" aria-label="Ambient sound control">
-    <button class="sound-toggle" id="soundToggle" aria-pressed="false">Ambient: off</button>
+    <button class="sound-toggle" id="soundToggle" aria-pressed="false">Ambient off</button>
   </div>
 
   <script>
-    // Gentle line-by-line reveal
+    // Smooth line-by-line reveal
     const lines = document.querySelectorAll('.line');
     lines.forEach((line, i) => {
-      setTimeout(() => line.classList.add('show'), 400 + i * 800);
+      setTimeout(() => line.classList.add('show'), 500 + i * 900);
     });
 
-    // Soft ambient sound (generated noise, filtered)
+    // Soft ambient sound using Web Audio
     let audioCtx, noiseSource, gainNode, filterNode;
     let isPlaying = false;
     const button = document.getElementById('soundToggle');
@@ -203,7 +203,7 @@
       const buffer = context.createBuffer(1, bufferSize, context.sampleRate);
       const data = buffer.getChannelData(0);
       for (let i = 0; i < bufferSize; i++) {
-        data[i] = (Math.random() * 2 - 1) * 0.12;
+        data[i] = (Math.random() * 2 - 1) * 0.08;
       }
       return buffer;
     }
@@ -216,7 +216,7 @@
 
       filterNode = audioCtx.createBiquadFilter();
       filterNode.type = 'lowpass';
-      filterNode.frequency.value = 550;
+      filterNode.frequency.value = 420;
 
       gainNode = audioCtx.createGain();
       gainNode.gain.value = 0;
@@ -227,35 +227,30 @@
 
       noiseSource.start();
 
-      // Gentle fade in
-      gainNode.gain.linearRampToValueAtTime(0.03, audioCtx.currentTime + 3.5);
+      gainNode.gain.linearRampToValueAtTime(0.025, audioCtx.currentTime + 4.0);
 
       isPlaying = true;
-      button.textContent = 'Ambient: on';
+      button.textContent = 'Ambient on';
       button.setAttribute('aria-pressed', 'true');
     }
 
     function stopAmbient() {
       if (!audioCtx) return;
-      gainNode.gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + 2.5);
+      gainNode.gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + 3.0);
       setTimeout(() => {
         noiseSource.stop();
         audioCtx.close();
         audioCtx = null;
         isPlaying = false;
-        button.textContent = 'Ambient: off';
+        button.textContent = 'Ambient off';
         button.setAttribute('aria-pressed', 'false');
-      }, 2600);
+      }, 3200);
     }
 
     button.addEventListener('click', () => {
-      if (!isPlaying) {
-        startAmbient();
-      } else {
-        stopAmbient();
-      }
+      if (!isPlaying) startAmbient();
+      else stopAmbient();
     });
   </script>
 </body>
 </html>
-
