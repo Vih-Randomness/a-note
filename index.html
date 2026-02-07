@@ -1,195 +1,308 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sq">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>—</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Qetësi — Vihan</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg-top: #f4efe9;
-      --bg-bottom: #efebe6;
-      --text-main: #2f2f2f;
-      --text-soft: #5f5f5f;
+    :root{
+      --bg-top: #f6efe6;
+      --bg-bottom: #f1f2ef;
+      --text: #3a3530;
+      --muted: #7b746b;
+      --accent: #9aa8a0;
+      --paper: rgba(255,255,255,0.35);
+      --shadow: rgba(0,0,0,0.05);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
       padding: 0;
-      min-height: 100%;
-      background: linear-gradient(to bottom, var(--bg-top), var(--bg-bottom));
-      color: var(--text-main);
-      font-family: 'Lora', serif;
+      height: 100%;
+      background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+      color: var(--text);
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.1px;
     }
 
     body {
       display: flex;
+      align-items: center;
       justify-content: center;
-      padding: 12vh 6vw;
-      line-height: 1.9;
+      padding: 6vh 6vw;
+      overflow-x: hidden;
     }
 
-    .paper {
-      max-width: 720px;
-      width: 100%;
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
-    }
-
-    section {
-      margin-bottom: 8vh;
-    }
-
-    p {
-      margin: 0 0 1.2em 0;
-      opacity: 0;
-      transform: translateY(6px);
-      animation: lineIn 1.6s ease forwards;
-    }
-
-    p:nth-child(n) {
-      animation-delay: calc(var(--i) * 0.35s);
-    }
-
-    .soft {
-      color: var(--text-soft);
-    }
-
-    .signature {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-      margin-top: 6vh;
-      color: var(--text-soft);
-    }
-
-    .sound-toggle {
-      position: fixed;
-      bottom: 24px;
-      right: 28px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      color: var(--text-soft);
-      background: none;
-      border: none;
-      cursor: pointer;
-      opacity: 0.6;
-    }
-
-    .sound-toggle:hover {
-      opacity: 1;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    @keyframes lineIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* subtle grain */
+    /* Subtle paper texture */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      opacity: 0.25;
       pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      max-width: 820px;
+      width: 100%;
+      padding: 2.5rem 2.5rem;
+      background: var(--paper);
+      border-radius: 22px;
+      box-shadow: 0 20px 60px var(--shadow);
+      backdrop-filter: blur(2px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 500;
+      margin: 0 0 1rem 0;
+      opacity: 0;
+      transform: translateY(6px);
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .subtitle {
+      font-family: "Inter", sans-serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(6px);
+      animation: fadeIn 2s ease 0.6s forwards;
+    }
+
+    .section {
+      margin: 2.2rem 0;
+    }
+
+    .section h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin: 0 0 0.7rem 0;
+      letter-spacing: 0.5px;
+    }
+
+    .line {
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      line-height: 1.9;
+      margin: 0.2rem 0;
+      opacity: 0;
+      transform: translateY(8px);
+      filter: blur(0.2px);
+    }
+
+    .line.show {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+      transition: opacity 1.6s ease, transform 1.6s ease, filter 2s ease;
+    }
+
+    .closing {
+      margin-top: 2.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      font-size: 1.15rem;
+      line-height: 1.9;
+    }
+
+    .signature {
+      margin-top: 1.2rem;
+      font-size: 1.2rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .controls {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      margin-top: 2.2rem;
+      font-family: "Inter", sans-serif;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    button {
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.5);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--text);
+      transition: background 0.6s ease, transform 0.6s ease;
+    }
+
+    button:hover { background: rgba(255,255,255,0.7); }
+    button:active { transform: scale(0.98); }
+
+    /* Slow floating dust */
+    .dust {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .dust span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(120,120,120,0.10);
+      border-radius: 50%;
+      animation: float 40s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(120vh) translateX(0); opacity: 0; }
+      10% { opacity: 0.25; }
+      50% { opacity: 0.15; }
+      to { transform: translateY(-20vh) translateX(40px); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .line, .title, .subtitle { animation: none; opacity: 1; transform: none; }
+      .line.show { transition: none; }
+      .dust { display: none; }
     }
   </style>
 </head>
-
 <body>
-  <div class="paper">
-
-    <!-- 🌑 Hyrja -->
-    <section>
-      <p style="--i:1">Ka netë kur zemra harron si të pushojë.</p>
-      <p style="--i:2">Kur bota vazhdon të ecë,<br>por ti mbetesh aty ku gjithçka u thye.</p>
-      <p style="--i:3" class="soft">Blerta, nuk ke pse ta ndjekësh.</p>
-    </section>
-
-    <!-- 🌊 Humbja dhe Dashuria -->
-    <section>
-      <p style="--i:1">Disa njerëz nuk largohen në heshtje.</p>
-      <p style="--i:2">Ata qëndrojnë në çdo frymë,<br>në çdo kujtim,<br>në çdo fjali të papërfunduar.</p>
-      <p style="--i:3">Kjo nuk është mungesë.</p>
-      <p style="--i:4">Kjo është dashuri që refuzon të zhduket.</p>
-    </section>
-
-    <!-- 🖤 Pesha e Dhimbjes -->
-    <section>
-      <p style="--i:1">Dhimbja nuk është gjithmonë e zhurmshme.</p>
-      <p style="--i:2">Ndonjëherë është vetëm rëndesë.</p>
-      <p style="--i:3">Ndonjëherë është mpirje.</p>
-      <p style="--i:4">Ndonjëherë është të mos duash asgjë,<br>sepse të duash dhemb.</p>
-    </section>
-
-    <!-- 🌙 Leja për të qenë e thyer -->
-    <section>
-      <p style="--i:1">Nuk je e dobët për mënyrën si ndihesh, Blerta.</p>
-      <p style="--i:2">Nuk je gabim që po ndryshon.</p>
-      <p style="--i:3">Nuk po dështon në jetë.</p>
-      <p style="--i:4">Ti po mbijeton dashurinë pas humbjes.</p>
-    </section>
-
-    <!-- 🕊️ Besimi -->
-    <section>
-      <p style="--i:1">Edhe kur fjalët shpërbëhen,<br>ti nuk je e padukshme.</p>
-      <p style="--i:2">Çdo lot ka një dëshmitar.</p>
-      <p style="--i:3">Allahu është më afër se dhimbja në kraharorin tënd.</p>
-    </section>
-
-    <!-- 🤍 Kujdesi -->
-    <section>
-      <p style="--i:1">Unë kujdesem për ty, Blerta.</p>
-      <p style="--i:2">Të dua — në heshtje, pa kërkesa,<br>pa pritshmëri.</p>
-      <p style="--i:3">Jo për të të rregulluar.</p>
-      <p style="--i:4">Jo për të të nxituar.</p>
-      <p style="--i:5">Vetëm për të qenë këtu.</p>
-    </section>
-
-    <!-- 🌌 Mbyllja -->
-    <section>
-      <p style="--i:1">Nëse ditët duken të pafundme,<br>merr vetëm këtë çast.</p>
-      <p style="--i:2">Dhe nëse edhe ky çast është shumë i rëndë—<br>unë do të qëndroj me ty.</p>
-
-      <div class="signature">— Vihan</div>
-    </section>
-
+  <div class="dust" aria-hidden="true">
+    <!-- create gentle dust dots -->
+    <span style="left:10%; animation-delay: 0s;"></span>
+    <span style="left:20%; animation-delay: 8s;"></span>
+    <span style="left:30%; animation-delay: 16s;"></span>
+    <span style="left:40%; animation-delay: 24s;"></span>
+    <span style="left:50%; animation-delay: 4s;"></span>
+    <span style="left:60%; animation-delay: 12s;"></span>
+    <span style="left:70%; animation-delay: 20s;"></span>
+    <span style="left:80%; animation-delay: 28s;"></span>
+    <span style="left:90%; animation-delay: 6s;"></span>
   </div>
 
-  <!-- Optional Sound -->
-  <audio id="ambience" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_2e9c3f4c7b.mp3" type="audio/mpeg">
+  <main class="wrap">
+    <h1 class="title">🌙 Hyrja</h1>
+    <p class="subtitle">Një vend i qetë, ku fjalët vijnë ngadalë.</p>
+
+    <section class="section">
+      <p class="line">“Ka netë kur zemra harron si të pushojë.”</p>
+      <p class="line">“Kur bota vazhdon të ecë,</p>
+      <p class="line">por ti mbetesh aty ku gjithçka u thye.”</p>
+      <p class="line">“Blerta, nuk ke pse ta ndjekësh.”</p>
+    </section>
+
+    <section class="section">
+      <h2>🌊 Humbja dhe Dashuria</h2>
+      <p class="line">“Disa njerëz nuk largohen në heshtje.”</p>
+      <p class="line">“Ata qëndrojnë në çdo frymë,</p>
+      <p class="line">në çdo kujtim,</p>
+      <p class="line">në çdo fjali të papërfunduar.”</p>
+      <p class="line">“Kjo nuk është mungesë.”</p>
+      <p class="line">“Kjo është dashuri që refuzon të zhduket.”</p>
+    </section>
+
+    <section class="section">
+      <h2>🖤 Pesha e Dhimbjes</h2>
+      <p class="line">“Dhimbja nuk është gjithmonë e zhurmshme.”</p>
+      <p class="line">“Ndonjëherë është vetëm rëndesë.”</p>
+      <p class="line">“Ndonjëherë është mpirje.”</p>
+      <p class="line">“Ndonjëherë është të mos duash asgjë,</p>
+      <p class="line">sepse të duash dhemb.”</p>
+    </section>
+
+    <section class="section">
+      <h2>🌙 Leja për të qenë e thyer</h2>
+      <p class="line">“Nuk je e dobët për mënyrën si ndihesh, Blerta.”</p>
+      <p class="line">“Nuk je gabim që po ndryshon.”</p>
+      <p class="line">“Nuk po dështon në jetë.”</p>
+      <p class="line">“Ti po mbijeton dashurinë pas humbjes.”</p>
+    </section>
+
+    <section class="section">
+      <h2>🕊️ Besimi — si pëshpëritje</h2>
+      <p class="line">“Edhe kur fjalët shpërbëhen,</p>
+      <p class="line">ti nuk je e padukshme.”</p>
+      <p class="line">“Çdo lot ka një dëshmitar.”</p>
+      <p class="line">“Allahu është më afër se dhimbja në kraharorin tënd.”</p>
+    </section>
+
+    <section class="section">
+      <h2>🤍 Kujdesi dhe Dashuria (shumë butë)</h2>
+      <p class="line">“Unë kujdesem për ty, Blerta.”</p>
+      <p class="line">“Të dua — në heshtje, pa kërkesa,</p>
+      <p class="line">pa pritshmëri.”</p>
+      <p class="line">“Jo për të të rregulluar.”</p>
+      <p class="line">“Jo për të të nxituar.”</p>
+      <p class="line">“Vetëm për të qenë këtu.”</p>
+    </section>
+
+    <section class="section closing">
+      <p class="line">“Nëse ditët duken të pafundme,</p>
+      <p class="line">merr vetëm këtë çast.”</p>
+      <p class="line">“Dhe nëse edhe ky çast është shumë i rëndë—</p>
+      <p class="line">unë do të qëndroj me ty.”</p>
+      <p class="signature">— Vihan</p>
+    </section>
+
+    <div class="controls">
+      <span>Sound: off by default</span>
+      <button id="toggleSound">Enable ambient</button>
+    </div>
+  </main>
+
+  <audio id="ambient" loop preload="auto">
+    <source src="https://cdn.pixabay.com/audio/2022/10/10/audio_7e7a1b6f40.mp3" type="audio/mpeg">
   </audio>
 
-  <button class="sound-toggle" onclick="toggleSound()">sound</button>
-
   <script>
-    const audio = document.getElementById('ambience');
+    // Line-by-line gentle reveal
+    const lines = Array.from(document.querySelectorAll('.line'));
+    lines.forEach((line, i) => {
+      setTimeout(() => line.classList.add('show'), 700 + i * 520);
+    });
+
+    // Optional ambient sound
+    const btn = document.getElementById('toggleSound');
+    const audio = document.getElementById('ambient');
     let playing = false;
 
-    function toggleSound() {
-      if (!playing) {
-        audio.volume = 0.08;
-        audio.play();
-        playing = true;
-      } else {
-        audio.pause();
-        playing = false;
+    btn.addEventListener('click', async () => {
+      try {
+        if (!playing) {
+          audio.volume = 0.08;
+          await audio.play();
+          btn.textContent = 'Disable ambient';
+          playing = true;
+        } else {
+          audio.pause();
+          btn.textContent = 'Enable ambient';
+          playing = false;
+        }
+      } catch (e) {
+        btn.textContent = 'Tap to allow sound';
       }
-    }
+    });
   </script>
 </body>
 </html>
