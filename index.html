@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>—</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-top: #f4efe9;
+      --bg-bottom: #efebe6;
+      --text-main: #2f2f2f;
+      --text-soft: #5f5f5f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: linear-gradient(to bottom, var(--bg-top), var(--bg-bottom));
+      color: var(--text-main);
+      font-family: 'Lora', serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 12vh 6vw;
+      line-height: 1.9;
+    }
+
+    .paper {
+      max-width: 720px;
+      width: 100%;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    section {
+      margin-bottom: 8vh;
+    }
+
+    p {
+      margin: 0 0 1.2em 0;
+      opacity: 0;
+      transform: translateY(6px);
+      animation: lineIn 1.6s ease forwards;
+    }
+
+    p:nth-child(n) {
+      animation-delay: calc(var(--i) * 0.35s);
+    }
+
+    .soft {
+      color: var(--text-soft);
+    }
+
+    .signature {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      margin-top: 6vh;
+      color: var(--text-soft);
+    }
+
+    .sound-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    .sound-toggle:hover {
+      opacity: 1;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes lineIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* subtle grain */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="paper">
+
+    <!-- 🌑 Hyrja -->
+    <section>
+      <p style="--i:1">Ka netë kur zemra harron si të pushojë.</p>
+      <p style="--i:2">Kur bota vazhdon të ecë,<br>por ti mbetesh aty ku gjithçka u thye.</p>
+      <p style="--i:3" class="soft">Blerta, nuk ke pse ta ndjekësh.</p>
+    </section>
+
+    <!-- 🌊 Humbja dhe Dashuria -->
+    <section>
+      <p style="--i:1">Disa njerëz nuk largohen në heshtje.</p>
+      <p style="--i:2">Ata qëndrojnë në çdo frymë,<br>në çdo kujtim,<br>në çdo fjali të papërfunduar.</p>
+      <p style="--i:3">Kjo nuk është mungesë.</p>
+      <p style="--i:4">Kjo është dashuri që refuzon të zhduket.</p>
+    </section>
+
+    <!-- 🖤 Pesha e Dhimbjes -->
+    <section>
+      <p style="--i:1">Dhimbja nuk është gjithmonë e zhurmshme.</p>
+      <p style="--i:2">Ndonjëherë është vetëm rëndesë.</p>
+      <p style="--i:3">Ndonjëherë është mpirje.</p>
+      <p style="--i:4">Ndonjëherë është të mos duash asgjë,<br>sepse të duash dhemb.</p>
+    </section>
+
+    <!-- 🌙 Leja për të qenë e thyer -->
+    <section>
+      <p style="--i:1">Nuk je e dobët për mënyrën si ndihesh, Blerta.</p>
+      <p style="--i:2">Nuk je gabim që po ndryshon.</p>
+      <p style="--i:3">Nuk po dështon në jetë.</p>
+      <p style="--i:4">Ti po mbijeton dashurinë pas humbjes.</p>
+    </section>
+
+    <!-- 🕊️ Besimi -->
+    <section>
+      <p style="--i:1">Edhe kur fjalët shpërbëhen,<br>ti nuk je e padukshme.</p>
+      <p style="--i:2">Çdo lot ka një dëshmitar.</p>
+      <p style="--i:3">Allahu është më afër se dhimbja në kraharorin tënd.</p>
+    </section>
+
+    <!-- 🤍 Kujdesi -->
+    <section>
+      <p style="--i:1">Unë kujdesem për ty, Blerta.</p>
+      <p style="--i:2">Të dua — në heshtje, pa kërkesa,<br>pa pritshmëri.</p>
+      <p style="--i:3">Jo për të të rregulluar.</p>
+      <p style="--i:4">Jo për të të nxituar.</p>
+      <p style="--i:5">Vetëm për të qenë këtu.</p>
+    </section>
+
+    <!-- 🌌 Mbyllja -->
+    <section>
+      <p style="--i:1">Nëse ditët duken të pafundme,<br>merr vetëm këtë çast.</p>
+      <p style="--i:2">Dhe nëse edhe ky çast është shumë i rëndë—<br>unë do të qëndroj me ty.</p>
+
+      <div class="signature">— Vihan</div>
+    </section>
+
+  </div>
+
+  <!-- Optional Sound -->
+  <audio id="ambience" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/30/audio_2e9c3f4c7b.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="sound-toggle" onclick="toggleSound()">sound</button>
+
+  <script>
+    const audio = document.getElementById('ambience');
+    let playing = false;
+
+    function toggleSound() {
+      if (!playing) {
+        audio.volume = 0.08;
+        audio.play();
+        playing = true;
+      } else {
+        audio.pause();
+        playing = false;
+      }
+    }
+  </script>
+</body>
+</html>
