@@ -1,256 +1,446 @@
 <!DOCTYPE html>
-<html lang="sq">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Një Pëshpëritje e Qetë</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>100 Reasons I Love My Blerta · Forever & Always</title>
   <style>
-    :root{
-      --bg-top: #0b0b0c;
-      --bg-mid: #0e0f12;
-      --bg-bot: #121316;
-      --text: #e8e2d9;
-      --subtext: #b8b1a8;
-      --accent: #cfd8d4;
-    }
-
-    * { box-sizing: border-box; }
-
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      min-height: 100%;
-      color: var(--text);
-      font-family: "Playfair Display", "Lora", "Cormorant Garamond", serif;
-      line-height: 1.95;
-      letter-spacing: 0.2px;
-      background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 55%, var(--bg-bot) 100%);
-      animation: bgShift 360s ease-in-out infinite alternate;
-      overflow-x: hidden;
+      box-sizing: border-box;
     }
 
-    body::before{
-      content:"";
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(rgba(255,255,255,0.04) 0.7px, transparent 0.8px),
-        radial-gradient(rgba(255,255,255,0.025) 0.5px, transparent 0.6px);
-      background-size: 140px 140px, 200px 200px;
-      background-position: 0 0, 70px 90px;
-      opacity: 0.35;
-      pointer-events: none;
-      animation: dustDrift 320s linear infinite;
+    body {
+      background: linear-gradient(145deg, #fbe9f0 0%, #ffd9e5 100%);
+      font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, 'Poppins', 'Cantarell', 'Helvetica Neue', sans-serif;
+      padding: 2rem 1rem;
+      color: #2c1810;
     }
 
-    body::after{
-      content:"";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(1200px 600px at 50% -200px, rgba(255,255,255,0.04), transparent 70%);
-      pointer-events: none;
-    }
-
-    @keyframes bgShift {
-      0% { background-position: 50% 0%; }
-      100% { background-position: 50% 100%; }
-    }
-
-    @keyframes dustDrift {
-      0% { transform: translateY(0px) translateX(0px); }
-      100% { transform: translateY(-80px) translateX(60px); }
-    }
-
-    .wrap {
-      max-width: 760px;
+    /* main container */
+    .love-container {
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 76px 24px 120px;
+      background: rgba(255, 250, 245, 0.85);
+      backdrop-filter: blur(2px);
+      border-radius: 4rem 2rem 4rem 2rem;
+      box-shadow: 0 30px 45px rgba(0, 0, 0, 0.1), 0 8px 18px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      padding: 2rem 2rem 3rem;
+      transition: all 0.2s ease;
+    }
+
+    /* header section with heartbeat */
+    .hero {
       text-align: center;
+      margin-bottom: 3rem;
+      border-bottom: 2px dashed #ffb7c5;
+      padding-bottom: 2rem;
     }
 
-    h1 {
-      font-weight: 400;
-      font-size: clamp(1.7rem, 3.2vw, 2.2rem);
-      margin: 0 0 22px 0;
-      color: var(--text);
+    .hero h1 {
+      font-size: 3.5rem;
+      background: linear-gradient(135deg, #c44569, #e66767, #f8a5c2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    .line {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 2.6s ease, transform 2.6s ease;
-      margin: 18px 0;
-      font-size: clamp(1.05rem, 2.6vw, 1.2rem);
-      will-change: opacity, transform;
+    .heartbeat {
+      animation: pulse 1.4s infinite ease-in-out;
+      display: inline-block;
+      font-size: 3rem;
     }
 
-    .line.show {
-      opacity: 1;
-      transform: translateY(0);
-      animation: breathe 12s ease-in-out infinite;
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; text-shadow: 0 0 0 rgba(199, 60, 90, 0.3);}
+      50% { transform: scale(1.18); opacity: 1; text-shadow: 0 0 12px #ff8da1;}
+      100% { transform: scale(1); opacity: 0.8;}
     }
 
-    @keyframes breathe {
-      0%, 100% { opacity: 1; transform: translateY(0px); }
-      50% { opacity: 0.93; transform: translateY(-1.2px); }
+    .sub {
+      font-size: 1.3rem;
+      color: #b14a6b;
+      background: #fff0f3d0;
+      display: inline-block;
+      padding: 0.5rem 1.8rem;
+      border-radius: 60px;
+      backdrop-filter: blur(2px);
+      font-weight: 500;
+      margin-top: 0.8rem;
     }
 
-    .section-title {
-      margin: 46px 0 10px;
-      font-size: 0.92rem;
-      color: var(--subtext);
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      font-family: "Inter", "Helvetica", sans-serif;
+    /* counter badge */
+    .reason-counter {
+      background: #fff2f5;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 0.5rem 1.5rem;
+      margin-top: 1rem;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    .signature {
-      margin-top: 50px;
-      font-family: "Inter", "Helvetica", sans-serif;
-      font-size: 0.98rem;
-      color: var(--subtext);
-      letter-spacing: 0.6px;
+    .counter-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #c44569;
+      font-family: monospace;
     }
 
-    .controls {
-      position: fixed;
-      bottom: 16px;
-      right: 16px;
+    /* grid of reasons */
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    /* card style */
+    .reason-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.2rem 1.2rem 1.2rem 1.8rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0,0,0,0.05);
       display: flex;
       align-items: center;
-      gap: 10px;
-      opacity: 0.85;
+      gap: 0.9rem;
+      border: 1px solid #ffe2ea;
+      backdrop-filter: blur(2px);
     }
 
-    .sound-toggle {
-      font-family: "Inter", "Helvetica", sans-serif;
-      font-size: 0.82rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--accent);
-      padding: 8px 12px;
-      border-radius: 18px;
-      cursor: pointer;
-      transition: background 0.8s ease, opacity 0.8s ease;
+    .reason-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      background: #fffafc;
+      border-color: #ffb7c9;
+      box-shadow: 0 20px 25px -12px rgba(196, 69, 105, 0.25);
     }
 
-    .sound-toggle:hover {
-      background: rgba(255,255,255,0.1);
+    .reason-number {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: #fdeff3;
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 60px;
+      color: #bc5f7c;
+      font-family: 'Segoe UI', monospace;
+      flex-shrink: 0;
+      box-shadow: inset 0 1px 2px #fff8, 0 2px 5px rgba(0,0,0,0.02);
     }
 
-    @media (max-width: 600px) {
-      .wrap { padding: 64px 18px 110px; }
-      .line { margin: 16px 0; line-height: 2.05; }
-      .section-title { margin-top: 38px; }
-      .controls { bottom: 12px; right: 12px; }
+    .reason-text {
+      font-size: 1rem;
+      line-height: 1.4;
+      font-weight: 500;
+      color: #2c1e1a;
+      word-break: break-word;
+      flex: 1;
+    }
+
+    /* footer */
+    .footer-note {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 1rem;
+      color: #ad6a80;
+      border-top: 1px solid #ffcdda;
+      padding-top: 2rem;
+      font-style: italic;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-note span {
+      background: #ffeef4;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+    }
+
+    /* responsive touches */
+    @media (max-width: 700px) {
+      .love-container {
+        padding: 1.5rem;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .reason-number {
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+      }
+      .reason-card {
+        padding: 1rem;
+      }
+      .reasons-grid {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .reason-text {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* print support (cute) */
+    @media print {
+      body {
+        background: white;
+        padding: 0.2in;
+      }
+      .reason-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ffcdda;
+      }
+      .heartbeat {
+        animation: none;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="wrap" aria-label="Tribute page">
-    <h1>Një Pëshpëritje e Qetë</h1>
-
-    <div class="line">Ka netë kur zemra harron si të pushojë.</div>
-    <div class="line">Kur bota vazhdon të ecë, por ti mbetesh aty ku gjithçka u thye.</div>
-    <div class="line">Blerta, nuk ke pse ta ndjekësh.</div>
-    <div class="line">Jam këtu, vetëm për të qenë pranë asaj që dhemb.</div>
-
-    <div class="section-title">Humbja dhe Dashuria</div>
-    <div class="line">Humbja nuk është boshësi, është dashuri pa ku të shkojë.</div>
-    <div class="line">Ajo mbetet në ajër, në krahun e munguar, në çdo kujtim që s’pushon së ndriçuari.</div>
-
-    <div class="section-title">Pesha e Dhimbjes</div>
-    <div class="line">Dhimbja ka peshë, si një batanije e rëndë mbi shpatulla.</div>
-    <div class="line">Ndonjëherë, mjafton vetëm të marrësh frymë nën të, pa e ngritur.</div>
-
-    <div class="section-title">Leja për të qenë e thyer</div>
-    <div class="line">Nuk ka nevojë të jesh e fortë tani.</div>
-    <div class="line">Lejoje veten të jesh e thyer, ashtu siç je, pa arsye dhe pa kohë.</div>
-
-    <div class="section-title">Besimi si pëshpëritje</div>
-    <div class="line">Besimi nuk është gjithmonë zë i madh.</div>
-    <div class="line">Ndonjëherë është vetëm një pëshpëritje, unë jam këtu.</div>
-
-    <div class="section-title">Kujdesi dhe Dashuria</div>
-    <div class="line">Kujdesi vjen ngadalë, si drita e mëngjesit që s’e nxjerr askënd nga ëndrra.</div>
-    <div class="line">Dashuria për të nuk humbet, ajo ndryshon formë, por jo zemër.</div>
-
-    <div class="section-title">Mbyllja</div>
-    <div class="line">Nëse sot është e rëndë, atëherë le të jetë e rëndë.</div>
-    <div class="line">Unë do të qëndroj këtu, pa të shtyrë, pa të nxituar, vetëm pranë.</div>
-
-    <div class="signature">Vihan</div>
-  </main>
-
-  <div class="controls" aria-label="Ambient sound control">
-    <button class="sound-toggle" id="soundToggle" aria-pressed="false">Ambient off</button>
+<div class="love-container">
+  <div class="hero">
+    <h1>
+      <span class="heartbeat">❤️</span> 
+      100 Reasons I Love My Blerta 
+      <span class="heartbeat">❤️</span>
+    </h1>
+    <div class="sub">Every tiny reason, every wild and tender thing 🌹</div>
+    <div class="reason-counter">
+      <span>✨ counting the ways ✨</span>
+      <span class="counter-number" id="reasonCountDisplay">100</span>
+    </div>
   </div>
 
-  <script>
-    // Smooth line-by-line reveal
-    const lines = document.querySelectorAll('.line');
-    lines.forEach((line, i) => {
-      setTimeout(() => line.classList.add('show'), 500 + i * 900);
+  <div class="reasons-grid" id="reasonsList"></div>
+
+  <div class="footer-note">
+    <span>💖 For Blerta, my heart's favorite place 💖</span>
+    <span>⭐ forever & always ⭐</span>
+  </div>
+</div>
+
+<script>
+  // ============================================================
+  // 100 UNIQUE, HEARTFELT & PERSONALIZABLE REASONS
+  // Each reason captures why "I love my Blerta" – romantic, sweet,
+  // playful, deep, everyday magic. You can easily edit any text.
+  // ============================================================
+  const reasons = [
+    "Your smile lights up my darkest days.",
+    "The way you laugh until you can't breathe, it's my favorite melody.",
+    "You make ordinary moments feel like adventures.",
+    "Your kindness to strangers shows the size of your heart.",
+    "The way you say my name, soft like a secret.",
+    "You believe in me even when I don't believe in myself.",
+    "Your strength when life gets hard inspires me every day.",
+    "You trust me completely, and that makes me yours in every way.",
+    "You’re brave enough to be vulnerable, sexy enough to be bold.",
+    "You make me smile like an idiot, and also bite my lip like crazy.",
+    "Your fierce loyalty to the people you love.",
+    "You never let the distance make us roommates, you keep us lovers.",
+    "You forgive my flaws and love me deeper anyway.",
+    "Your shyness after i tell you a dirty joke.",
+    "Yours kisses that make me horny even when i'm outside.",
+    "We've never kissed, but i already know it will feel like coming home."
+    "You text me good morning before I even wake up.",
+    "You've made me feel things i didn't know existed across a screen.",
+    "You make me want to be a better person, every single day.",
+    "You've made me believe in love at first text, not just first sight.",
+    "You're my secret, my hope, my beautiful 'not yet'.",
+    "Our late-night calls feel more intimate than anything physical i've ever known.",
+    "You never let me give up on myself.",
+    "The wrinkle on your nose when you're confused.",
+    "I love the way you say my name like it's fragile and precious.",
+    "You’re my best friend and my greatest love wrapped in one.",
+    "Your honest, wise advice that always grounds me.",
+    "You make me feel seen, heard, and valued.",
+    "We've never touched, but your words give me goosebumps.",
+    "You've never made me feel silly for falling for someone i've never touched.",
+    "You make even silence comfortable and full of love.",
+    "Your laugh during video calls makes the distance feel like a cruel joke.",
+    "I love how you describe the way you'd hold me if i was there.",
+    "You are my peace in a chaotic world.",
+    "Your silly faces when you try to make me laugh after a hard day.",
+    "You respect my space and also know when I need closeness.",
+    "The way you care for plants and make everything bloom.",
+    "You have the most beautiful heart, soft and fiery at once.",
+    "You accept all my past and walk with me toward the future.",
+    "I love the idea of holding your hand for the first time after knowing your soul for months.",
+    "You trust me with your insecurities, and that makes me trust you with mine.",
+    "Your passion for the things you love, it’s electric.",
+    "You’re honest about your flaws, and that makes you beautiful.",
+    "Your optimism is contagious, it heals my soul.",
+    "You challenge me intellectually and we grow together.",
+    "When you whisper 'i love you' when you think i'm asleep.",
+    "You make me feel brave enough to want things i was scared to want before.",
+    "You always show up for the people you love, no excuses.",
+    "The way you disagree with having 5 kids and always asking for 3",
+    "You love me in all my messy, unfinished glory.",
+    "You’ve never judged me for the people i used to be.",
+    "You make me feel like i’m enough, exactly as i am, from here.",
+    "The way you defend me without hesitation.",
+    "You make me feel like meeting you will be the beginning of the rest of my life.",
+    "You never compare me to anyone, I'm your only one.",
+    "Your ambition pushes me to chase my own dreams harder.",
+    "The cute little wrinkles around your eyes when you smile genuinely.",
+    "You’ve never made me feel like i’m wasting your time.",
+    "You talk about our first hug like it will heal something in you.",
+    "Your belief in true love, you proved it exists.",
+    "You make me feel wanted in a way that’s soft and wild at the same time.",
+    "You make me feel like the luckiest person on Earth.",
+    "You’ve already chosen me, and you keep choosing me every single day.",
+    "You're not afraid to be weird and wonderful with me.",
+    "Your boobs, they are big and beautiful btw",
+    "Your resilience, you're a warrior with a soft heart.",
+    "You make me feel like the distance is just a temporary inconvenience.",
+    "You’ve never once made me doubt your feelings.",
+    "Your ability to find beauty in broken things.",
+    "You always want to learn and grow, it's inspiring.",
+    "You’ve never made me feel alone, even when we’re thousands of miles apart.",
+    "You make me feel like the most important person in your world.",
+    "You’ve made me believe that some people are meant to find each other, even without a single touch.",
+    "Your eyes are beautiful, just with looking at them it makes my world brighter.",
+    "You never hold grudges; you choose understanding.",
+    "You’ve taught me that love isn’t about proximity, it’s about choice.",
+    "Your giggle after a sneeze, adorable every time.",
+    "You're not a ghost, you're the most real thing i've ever felt.",
+    "You make me feel brave enough to face anything.",
+    "Your honesty, it builds trust.",
+    "Because even without ever seeing each other, i've never loved anyone like this..",
+    "You are my favorite notification on my phone.",
+    "You're my favorite 'i can't wait', the anticipation itself is beautiful.",
+    "I love the way you pronounce words i taught you in my language.",
+    "The first time we video called, my hands were shaking. i already loved you then.",
+    "Your patience with the distance is the most romantic thing anyone has ever done for me.",
+    "Your loyalty is fierce, I never doubt where I stand.",
+    "You make me proud just by being you.",
+    "You aren't afraid to say sorry first, you value us more than ego.",
+    "Your love language is everything all at once.",
+    "The way you text me, (i wish you were in my bed right now), makes me forget about the miles.",
+    "You're bold enough to send me the kind of texts that make me check who's around me.",
+    "You never let me sleep when i'm horny, you'd help me out with it",
+    "We plan our future like it's already written, first date, first hug, first everything.",
+    "You share your deepest thoughts like gifts with me.",
+    "You keep my secrets with honor.",
+    "You lift me up when I’m stuck in my own head.",
+    "You let me be unapologetically myself, no masks needed.",
+    "You tell me about your day like i'm right there next to you.",
+    "Because your name, Blerta, is already poetry on my lips.",
+    "You are my home, no matter where we are, you are my home.",
+    "For all the reasons I can't put into words ... and a thousand more."
+  ];
+
+  // ensure we have exactly 100 reasons
+  if (reasons.length !== 100) {
+    console.warn(`We have ${reasons.length} reasons – adjusting to 100.`);
+    // just in case, fill or trim to 100 (but we already crafted 100 exactly)
+    // if less, we loop, but we have exactly 100 in the array above.
+    while (reasons.length < 100) reasons.push("Your love makes everything brighter — reason #" + (reasons.length+1));
+    if (reasons.length > 100) reasons.length = 100;
+  }
+
+  // beautiful touch: shuffle maybe? No, we keep the intentional order but we'll render them with numbers 1..100.
+  // However, randomizing each time might be fun but we keep stable order with roman? No, just natural.
+  // Render function
+  function renderReasons() {
+    const grid = document.getElementById('reasonsList');
+    if (!grid) return;
+    grid.innerHTML = '';
+    
+    reasons.forEach((reasonText, idx) => {
+      const number = idx + 1;
+      const card = document.createElement('div');
+      card.className = 'reason-card';
+      
+      const numberSpan = document.createElement('div');
+      numberSpan.className = 'reason-number';
+      numberSpan.textContent = number;
+      
+      const textSpan = document.createElement('div');
+      textSpan.className = 'reason-text';
+      textSpan.textContent = reasonText;
+      
+      card.appendChild(numberSpan);
+      card.appendChild(textSpan);
+      grid.appendChild(card);
     });
-
-    // Soft ambient sound using Web Audio
-    let audioCtx, noiseSource, gainNode, filterNode;
-    let isPlaying = false;
-    const button = document.getElementById('soundToggle');
-
-    function createNoiseBuffer(context) {
-      const bufferSize = 2 * context.sampleRate;
-      const buffer = context.createBuffer(1, bufferSize, context.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        data[i] = (Math.random() * 2 - 1) * 0.08;
-      }
-      return buffer;
-    }
-
-    function startAmbient() {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      noiseSource = audioCtx.createBufferSource();
-      noiseSource.buffer = createNoiseBuffer(audioCtx);
-      noiseSource.loop = true;
-
-      filterNode = audioCtx.createBiquadFilter();
-      filterNode.type = 'lowpass';
-      filterNode.frequency.value = 420;
-
-      gainNode = audioCtx.createGain();
-      gainNode.gain.value = 0;
-
-      noiseSource.connect(filterNode);
-      filterNode.connect(gainNode);
-      gainNode.connect(audioCtx.destination);
-
-      noiseSource.start();
-
-      gainNode.gain.linearRampToValueAtTime(0.025, audioCtx.currentTime + 4.0);
-
-      isPlaying = true;
-      button.textContent = 'Ambient on';
-      button.setAttribute('aria-pressed', 'true');
-    }
-
-    function stopAmbient() {
-      if (!audioCtx) return;
-      gainNode.gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + 3.0);
+    
+    // update the counter display just for consistency
+    const countDisplay = document.getElementById('reasonCountDisplay');
+    if (countDisplay) countDisplay.textContent = reasons.length;
+  }
+  
+  // tiny sprinkle: add intersection observer for fade-in effect on scroll? no needed, but nice
+  // just to make it charming and animated: we add a small staggered appear animation.
+  function addStaggeredAppear() {
+    const cards = document.querySelectorAll('.reason-card');
+    cards.forEach((card, i) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(12px)';
+      card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
       setTimeout(() => {
-        noiseSource.stop();
-        audioCtx.close();
-        audioCtx = null;
-        isPlaying = false;
-        button.textContent = 'Ambient off';
-        button.setAttribute('aria-pressed', 'false');
-      }, 3200);
-    }
-
-    button.addEventListener('click', () => {
-      if (!isPlaying) startAmbient();
-      else stopAmbient();
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, i * 20); // gentle cascade
     });
-  </script>
+  }
+  
+  // initial render
+  renderReasons();
+  
+  // after render, trigger gentle fade cascade
+  setTimeout(addStaggeredAppear, 100);
+  
+  // optional: re-run appear if grid changes (no changes, but after load)
+  window.addEventListener('load', () => {
+    addStaggeredAppear();
+    // additional easter egg: dynamic heart beat on hover over counter? not needed but fun
+    const counterDiv = document.querySelector('.reason-counter');
+    if(counterDiv){
+      counterDiv.addEventListener('mouseenter', () => {
+        const heartbeats = document.querySelectorAll('.heartbeat');
+        heartbeats.forEach(h => h.style.animation = 'pulse 0.5s infinite');
+      });
+      counterDiv.addEventListener('mouseleave', () => {
+        const heartbeats = document.querySelectorAll('.heartbeat');
+        heartbeats.forEach(h => h.style.animation = 'pulse 1.4s infinite ease-in-out');
+      });
+    }
+  });
+  
+  // small dynamic footer year or just magic
+  const currentYear = new Date().getFullYear();
+  const footerSpan = document.querySelector('.footer-note span:first-child');
+  if(footerSpan && !footerSpan.innerHTML.includes('202')) {
+    // just keeping original message but we can add timeless feeling
+  }
+</script>
 </body>
 </html>
